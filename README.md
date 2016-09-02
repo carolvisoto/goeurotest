@@ -6,7 +6,7 @@ How to run the application:
 
 -  `java -jar goeuro.jar 'CITY_NAME'`
 
--  The file will be recorded on the same directory where is located JAR file.
+-  The file will be recorded on the same directory where is located the JAR file.
 
 How to run the tests:
 ---------------------
