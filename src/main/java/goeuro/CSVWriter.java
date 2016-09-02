@@ -11,17 +11,25 @@ import java.util.List;
 public class CSVWriter {
     File file = new File("fromJSONToCSV.csv");
 
-    public File writeData(List<Location> listLocation) throws IOException {
-        if (!listLocation.isEmpty()) {
-            writeInCsv(listLocation);
-        }
-        return file;
+    private static CsvMapper mapper;
+    private static CsvSchema schema;
+    private static ObjectWriter objectWriter;
+
+    public CSVWriter() {
+        this.mapper = new CsvMapper();
+        this.schema = mapper.schemaFor(City.class);
+        this.objectWriter = mapper.writer(schema);
     }
 
-    private void writeInCsv(List<Location> locations) throws IOException {
-        CsvMapper mapper = new CsvMapper();
-        CsvSchema schema = mapper.schemaFor(Location.class);
-        ObjectWriter objectWriter = mapper.writer(schema);
-        objectWriter.writeValue(this.file, locations);
+    public File citiesWrittenOnCsv(List<City> listCity) throws IOException {
+        if (!listCity.isEmpty()) {
+            writeInCsv(listCity);
+        }
+        return file;
+
+    }
+
+    private void writeInCsv(List<City> cities) throws IOException {
+        objectWriter.writeValue(file, cities);
     }
 }

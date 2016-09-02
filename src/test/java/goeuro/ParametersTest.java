@@ -1,22 +1,40 @@
 package goeuro;
 
 
-import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class ParametersTest {
-    Parameters parameters;
-    @Before
-    public void setUp (){
-        parameters = new Parameters();
-    }
+    private final Parameters parameters = new Parameters();
+
     @Test
-    public void shouldParseAtLeastOneArgument(){
-        String [] listArguments  = {"arg1"};
-        assertEquals("arg1",  parameters.parseArguments(listArguments) );
+    public void shouldParseAtLeastOneArgument() throws Exception {
+        assertEquals("Berlin", parameters.parseArguments(new String[]{"Berlin"}));
     }
 
+    @Test(expected = RuntimeException.class)
+    public void throwsExceptionWhenAnEmptyArgumentIsPassedBy() throws Exception {
+        parameters.parseArguments(new String[]{});
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void throwsExceptionWhenTwoArgumentsArePassedBy() throws Exception {
+        parameters.parseArguments(new String[]{"arg1", "arg2"});
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void throwsExceptionWhenSpecialCharactersArePassedBy() throws Exception {
+        parameters.parseArguments(new String[]{"@#$%^&*"});
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void throwsExceptionWhenContainsNumbers() throws Exception {
+        parameters.parseArguments(new String[]{"Berlin123"});
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void throwsExceptionWhenContainSpace() throws Exception {
+        parameters.parseArguments(new String[]{"Berlin and Paris"});
+    }
 }

@@ -45,7 +45,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>goeuro.Parameters</mainClass>
+                            <mainClass>goeuro.Main</mainClass>
                         </manifest>
                     </archive>
 

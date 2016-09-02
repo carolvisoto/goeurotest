@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder({"_id", "name", "type", "latitude", "longitude"})
-public class Location {
+public class City {
     @JsonProperty("_id")
     private final Integer id;
     @JsonProperty("name")
@@ -16,10 +16,10 @@ public class Location {
     private final GeoPosition geoPosition;
 
     @JsonCreator
-    public Location(@JsonProperty("_id") Integer id,
-                    @JsonProperty("name") String name,
-                    @JsonProperty("type") String type,
-                    @JsonProperty("geo_position") GeoPosition geoPosition) {
+    public City(@JsonProperty("_id") Integer id,
+                @JsonProperty("name") String name,
+                @JsonProperty("type") String type,
+                @JsonProperty("geo_position") GeoPosition geoPosition) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -31,7 +31,7 @@ public class Location {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Location location = (Location) o;
+        City location = (City) o;
 
         if (id != null ? !id.equals(location.id) : location.id != null) return false;
         if (name != null ? !name.equals(location.name) : location.name != null) return false;
@@ -51,7 +51,7 @@ public class Location {
 
     @Override
     public String toString() {
-        return "Location{" +
+        return "City{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
