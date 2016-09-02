@@ -29,10 +29,10 @@ Design/Architecture Decisions
 -------------- 
 About the design:
  
- The class responsible for parsing the arguments is the Parameter.java
- The CityService.java is called to return the JSON document.
- The class responsible to return the list of Cities is the GenerateCities.java 
- To record the datas into the csv file is the CSVWriter.java is called.
+ - The class responsible for parsing the arguments is the Parameter.java
+ - The CityService.java is called to return the JSON document.
+ - The class responsible to return the list of Cities is the GenerateCities.java 
+ - To record the datas into the csv file is the CSVWriter.java is called.
  
  
    
